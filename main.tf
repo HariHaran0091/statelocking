@@ -7,14 +7,14 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "hariharan-buc-11"
+    bucket = "us-east-buc01"
     key    = ".statefile"
-    region = "ap-south-1"
+    region = "us-east-1"
   }
 }
 # resource "aws_dynamodb_table" "state_locking" {
 #   hash_key = "LockID"
-#   name     = "dynamodb-state-locking"
+#   name     = "dynamodb-state-locking1"
 #   attribute {
 #     name = "LockID"
 #     type = "S"
@@ -41,7 +41,7 @@ resource "aws_internet_gateway" "default" {
 resource "aws_subnet" "subnet1-public" {
   vpc_id            = aws_vpc.default.id
   cidr_block        = var.public_subnet1_cidr
-  availability_zone = "ap-south-1a"
+  availability_zone = "us-east-1a"
 
   tags = {
     Name = "${var.public_subnet1_name}"
@@ -51,7 +51,7 @@ resource "aws_subnet" "subnet1-public" {
 # resource "aws_subnet" "subnet2-public" {
 #   vpc_id            = aws_vpc.default.id
 #   cidr_block        = var.public_subnet2_cidr
-#   availability_zone = "ap-south-1b"
+#   availability_zone = "us-east-1b"
 
 #   tags = {
 #     Name = "${var.public_subnet2_name}"
@@ -61,7 +61,7 @@ resource "aws_subnet" "subnet1-public" {
 # resource "aws_subnet" "subnet3-public" {
 #   vpc_id            = aws_vpc.default.id
 #   cidr_block        = var.public_subnet3_cidr
-#   availability_zone = "ap-south-1c"
+#   availability_zone = "us-east-1c"
 
 #   tags = {
 #     Name = "${var.public_subnet3_name}"
@@ -118,7 +118,7 @@ resource "aws_security_group" "allow_all" {
 # resource "aws_instance" "web-1" {
 #     ami = "${data.aws_ami.my_ami.id}"
 #     #ami = "ami-0d857ff0f5fc4e03b"
-#     availability_zone = "ap-south-1a"
+#     availability_zone = "us-east-1a"
 #     instance_type = "t2.micro"
 #     key_name = "LaptopKey"
 #     subnet_id = "${aws_subnet.subnet1-public.id}"
