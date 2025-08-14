@@ -12,15 +12,15 @@ terraform {
     region = "us-east-1"
   }
 }
-# resource "aws_dynamodb_table" "state_locking" {
-#   hash_key = "LockID"
-#   name     = "dynamodb-state-locking1"
-#   attribute {
-#     name = "LockID"
-#     type = "S"
-#   }
-#   billing_mode = "PAY_PER_REQUEST"
-# }
+resource "aws_dynamodb_table" "state_locking" {
+  hash_key = "LockID"
+  name     = "dynamodb-state-locking1"
+  attribute {
+    name = "LockID"
+    type = "S"
+  }
+  billing_mode = "PAY_PER_REQUEST"
+}
 
 resource "aws_vpc" "default" {
   cidr_block           = var.vpc_cidr
